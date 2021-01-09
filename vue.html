@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Yokohama Q&A</title>
+  <style>
+    /*全体*/
+
+
+    .question_box {
+      display: block;
+      max-width: 800px;
+      margin-bottom: 7px;
+      margin-right: 20px;
+      font-size: 12px;
+      color: #FFFFFF;
+      text-align: center;
+      display: block;
+      padding: 3px 10px 3px 10px;
+      background: #3a5968;
+      border-radius: 5px;
+      box-shadow: 1px 1px #1A6EA0;
+    }
+
+    .kind_box {
+      display: block;
+      float: left;
+      border-style: solid;
+      border-color: #f8f6f6;
+      background: #0a0a0a;
+      display: block;
+      max-width: 400px;
+      margin-bottom: 7px;
+      margin-right: 10px;
+      font-size: 12px;
+      color: #fffefe;
+      text-align: center;
+      display: block;
+      padding: 3px 10px 3px 10px;
+      border-radius: 3px;
+      box-shadow: 1px 1px #1A6EA0;
+    }
+
+    .clear {
+      clear: both;
+    }
+
+    .answer_text {
+      font-size: 2em;
+      text-align: center;
+      line-height: 1.0em;
+      font-weight: bold;
+      color: #FFF;
+      text-shadow:
+        0 0 0.05em #F06292,
+        0 0 0.10em #F06292,
+        0 0 0.15em #F06292,
+        0 0 0.30em #F06292;
+      filter: saturate(80%);
+      float: left;
+    }
+
+    .question_box:hover {
+      background: #726232;
+    }
+
+    #answer {
+      text-align: left;
+      font-size: 1.3em;
+      line-height: 1.5em;
+      color: #FFF;
+      text-shadow:
+        0 0 0.05em #F06292,
+        0 0 0.10em #F06292,
+        0 0 0.15em #F06292,
+        0 0 0.30em #F06292;
+      filter: saturate(80%);
+      float: left;
+    }
+
+    #answer_box {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 12px 10px 3px 10px;
+      border: 3px solid #d493bb;
+      color: #ededf3;
+      background: #0c0c0c;
+      /*背景色*/
+    }
+
+    body {
+      position: absolute;
+      top: 70px;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    /*フォーム全体*/
+    .form1 {
+      position: relative;
+      /*フォームの相対位置*/
+      max-width: 270px;
+      /*フォームのサイズ*/
+      margin-bottom: 15px;
+      /*フォームの下に余白*/
+    }
+
+    /*検索ボックス*/
+    #sbox {
+      float: left;
+      /*フォームの絶対位置*/
+      left: 0;
+      top: 0;
+      outline: 0;
+      /*クリック時の青い枠線消す*/
+      height: 30px;
+      /*検索ボックスの高さ*/
+      padding: 0 10px;
+      /*テキスト位置調整*/
+      border-radius: 2px 0 0 2px;
+      /*検索ボックスの角を丸める*/
+      background: #eee;
+      /*検索ボックスの背景カラー*/
+    }
+
+    /*検索ボタン*/
+    #sbtn {
+      margin-left: 2pt;
+
+      width: 70px;
+      /*検索ボタンの横幅*/
+      height: 34px;
+      /*検索ボタンの縦幅*/
+      left: 200px;
+      /*検索ボタンの位置調整*/
+      top: 0;
+      border-radius: 0 2px 2px 0;
+      /*検索ボタンの角を丸める*/
+      background: #7fbfff;
+      /*検索ボタンの背景カラー*/
+      border: none;
+      /*検索ボタンの枠線を消す*/
+      color: #fff;
+      /*検索ボタンのテキストカラー*/
+      font-weight: bold;
+      /*検索ボタンのテキスト太字*/
+      font-size: 16px;
+      /*検索ボタンのフォントサイズ*/
+    }
+
+    /*フィルタボタン*/
+    #fbtn {
+      margin-left: 2pt;
+      width: 80px;
+      /*検索ボタンの横幅*/
+      height: 34px;
+      /*検索ボタンの縦幅*/
+      left: 200px;
+      /*検索ボタンの位置調整*/
+      top: 0;
+      border-radius: 0 2px 2px 0;
+      /*検索ボタンの角を丸める*/
+      background: #bde06b;
+      /*検索ボタンの背景カラー*/
+      border: none;
+      /*検索ボタンの枠線を消す*/
+      color: #fff;
+      /*検索ボタンのテキストカラー*/
+      font-weight: bold;
+      /*検索ボタンのテキスト太字*/
+      font-size: 16px;
+      /*検索ボタンのフォントサイズ*/
+    }
+
+    /*検索ボタンマウスオーバー時*/
+    #sbtn:hover {
+      color: #666;
+      /*検索ボタンマウスオーバー時のフォントカラー*/
+    }
+
+    /*フィルタボタンマウスオーバー時*/
+    #fbtn:hover {
+      color: #666;
+      /*検索ボタンマウスオーバー時のフォントカラー*/
+    }
+  </style>
+
+</head>
+
+<body>
+
+
+  <div class="wrapper">
+    <div class="search-area">
+
+      <form class="form1" action="">
+        <input id="sbox" id="s" name="s" type="text" placeholder="選択してください" />
+        <input id="fbtn" type="submit" value="フィルター" onclick="filter" />
+      </form>
+
+      <input type="text" id="search-text" placeholder="検索ワードを入力" />
+
+      <div class="search-result">
+        <div class="search-result__hit-num"></div>
+        <div id="search-result__list"></div>
+      </div>
+    </div>
+
+    </input>
+
+    <div id="answer_box">
+      <span class="answer_text">《回答》　</span>
+      <div id="answer"></div>
+    </div>
+
+    <!--スプレッドシートの読み込み部分-->
+    <div id="app">
+
+      <select id="sortKind" >
+        <option v-for="val in info.data">
+            {{ val.Kind }}
+        </option>
+      </select>
+
+      <ul class="target-area">
+        <li v-for="(val,index) in info.data">
+          <div class="kind_box">{{ val.Kind }}</div>
+          <button class="question_box" v-on:click="getAnswer(index,val.Answer)">{{ val.Qestion }}</button>
+          <div class="clear"></div>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+
+  <script src="https://www.promisejs.org/polyfills/promise-7.0.4.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="main.js"></script>
+</body>
+
+</html>
